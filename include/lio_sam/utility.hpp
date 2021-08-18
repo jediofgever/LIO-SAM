@@ -284,6 +284,8 @@ public:
         declare_parameter("globalMapVisualizationLeafSize", 1.0);
         get_parameter("globalMapVisualizationLeafSize", globalMapVisualizationLeafSize);
 
+        RCLCPP_INFO(get_logger(),"gpsTopic is: %s", gpsTopic.c_str());
+
         usleep(100);
     }
 
@@ -404,7 +406,7 @@ auto qos = rclcpp::QoS(
 rmw_qos_profile_t qos_profile_imu{
   RMW_QOS_POLICY_HISTORY_KEEP_LAST,
   2000,
-  RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT,
+  RMW_QOS_POLICY_RELIABILITY_RELIABLE,
   RMW_QOS_POLICY_DURABILITY_VOLATILE,
   RMW_QOS_DEADLINE_DEFAULT,
   RMW_QOS_LIFESPAN_DEFAULT,

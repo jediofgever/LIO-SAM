@@ -1,14 +1,14 @@
-/lio_sam*:
+/**:
   ros__parameters:
-
+    use_sim_time: true
     # Topics
-    pointCloudTopic: "/points" # Point cloud data
-    imuTopic: "/imu/data"                        # IMU data
-    odomTopic: "odometry/imu"                    # IMU pre-preintegration odometry, same frequency as IMU
-    gpsTopic: "odometry/gpsz"                    # GPS odometry topic from navsat, see module_navsat.launch file
+    pointCloudTopic: "/ouster/points"            # Point cloud data
+    imuTopic: "/xsens/imu"                        # IMU data
+    odomTopic: "/odometry/imu"                    # IMU pre-preintegration odometry, same frequency as IMU
+    gpsTopic: "/odometry/gps"                     # GPS odometry topic from navsat, see module_navsat.launch file
 
     # Frames
-    lidarFrame: "lidar_link"
+    lidarFrame: "lidar_sensor_link"
     baselinkFrame: "base_link"
     odometryFrame: "odom"
     mapFrame: "map"
@@ -20,7 +20,7 @@
     poseCovThreshold: 25.0                       # m^2, threshold for using GPS data
 
     # Export settings
-    savePCD: false                               # https://github.com/TixiaoShan/LIO-SAM/issues/3
+    savePCD: true                               # https://github.com/TixiaoShan/LIO-SAM/issues/3
     savePCDDirectory: "/Downloads/LOAM/"         # in your home folder, starts and ends with "/". Warning: the code deletes "LOAM" folder then recreates it. See "mapOptimization" for implementation
 
     # Sensor Settings
@@ -41,13 +41,13 @@
     imuGravity: 9.80511
     imuRPYWeight: 0.01
 
-    extrinsicTrans:  [ 0.0,  0.0,  0.0 ]
-    extrinsicRot:    [ 1.0,  0.0,  0.0,
-                       0.0, -1.0,  0.0,
-                       0.0,  0.0, -1.0 ]
-    extrinsicRPY: [ 1.0,  0.0,  0.0,
-                    0.0, -1.0,  0.0,
-                    0.0,  0.0, -1.0 ]
+    extrinsicTrans:  [ 0.0, 0.0, 0.0 ]
+    extrinsicRot:    [ 1.0, 0.0, 0.0,
+                       0.0, 1.0,  0.0,
+                       0.0, 0.0, 1.0 ]
+    extrinsicRPY: [ 1.0, 0.0, 0.0,
+                    0.0, 1.0, 0.0,
+                    0.0, 0.0, 1.0 ]
 
     # LOAM feature threshold
     edgeThreshold: 1.0
