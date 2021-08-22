@@ -25,19 +25,25 @@ find_package(OpenCV REQUIRED)
 find_package(PCL REQUIRED)
 find_package(GTSAM REQUIRED)
 find_package(Eigen REQUIRED)
+find_package(vox_nav_utilities REQUIRED)
+find_package(vox_nav_msgs REQUIRED)
+find_package(yaml-cpp REQUIRED )
+
 
 include_directories(
   include/lio_sam
+  ${YAML_CPP_INCLUDE_DIR}
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME} "msg/CloudInfo.msg" DEPENDENCIES std_msgs sensor_msgs)
 
 add_executable(${PROJECT_NAME}_featureExtraction src/featureExtraction.cpp)
-ament_target_dependencies(${PROJECT_NAME}_featureExtraction rclcpp rclpy std_msgs sensor_msgs geometry_msgs nav_msgs tf2 tf2_ros tf2_eigen tf2_sensor_msgs tf2_geometry_msgs OpenCV PCL)
+ament_target_dependencies(${PROJECT_NAME}_featureExtraction rclcpp rclpy std_msgs sensor_msgs geometry_msgs nav_msgs tf2 tf2_ros tf2_eigen tf2_sensor_msgs tf2_geometry_msgs OpenCV PCL )
 rosidl_target_interfaces(${PROJECT_NAME}_featureExtraction ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
 add_executable(${PROJECT_NAME}_imageProjection src/imageProjection.cpp)
-ament_target_dependencies(${PROJECT_NAME}_imageProjection rclcpp rclpy std_msgs sensor_msgs geometry_msgs nav_msgs tf2 tf2_ros tf2_eigen tf2_sensor_msgs tf2_geometry_msgs OpenCV PCL)
+ament_target_dependencies(${PROJECT_NAME}_imageProjection rclcpp rclpy std_msgs sensor_msgs geometry_msgs nav_msgs tf2 tf2_ros tf2_eigen tf2_sensor_msgs tf2_geometry_msgs vox_nav_utilities vox_nav_msgs OpenCV PCL)
+target_link_libraries(${PROJECT_NAME}_imageProjection ${YAML_CPP_LIBRARIES})
 rosidl_target_interfaces(${PROJECT_NAME}_imageProjection ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
 add_executable(${PROJECT_NAME}_imuPreintegration src/imuPreintegration.cpp)

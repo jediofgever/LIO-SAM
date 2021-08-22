@@ -2,34 +2,34 @@
 <robot name="lio" xmlns:xacro="http://tixiaoshan.github.io/">
   <xacro:property name="PI" value="3.1415926535897931" />
 
-  <link name="chassis_link"></link>
-
   <link name="base_link"></link>
-  <joint name="base_link_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="chassis_link" />
-    <origin xyz="0 0 0" rpy="0 0 0" />
-  </joint>
+  <link name="base_sensor_link" />
+  <link name="lidar_sensor_link"></link>
+  <link name="imu_link"></link>
+  <link name="gps_link"></link>
 
-  <link name="lidar_sensor_link"> </link>
-  <joint name="lidar_joint" type="fixed">
+  <joint name="base_sensor_joint" type="fixed">
     <parent link="base_link" />
+    <child link="base_sensor_link" />
+    <origin xyz="0.0 0. 0.0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="lidar_sensor_joint" type="fixed">
+    <parent link="base_sensor_link" />
     <child link="lidar_sensor_link" />
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
   </joint>
 
-  <link name="imu_link"> </link>
-  <joint name="imu_joint" type="fixed">
-    <parent link="chassis_link" />
+  <joint name="xsens_imu_sensor_joint" type="fixed">
+    <parent link="base_sensor_link" />
     <child link="imu_link" />
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="-0.0 -0.0 0.0" rpy="0 0 0" />
   </joint>
 
-  <link name="gps_link"> </link>
   <joint name="gps_joint" type="fixed">
-    <parent link="chassis_link" />
+    <parent link="base_sensor_link" />
     <child link="gps_link" />
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="-0.0 0.0 -0.0" rpy="0 0 0" />
   </joint>
 
 </robot>
