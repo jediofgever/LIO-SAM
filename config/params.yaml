@@ -3,7 +3,7 @@
     use_sim_time: true
     # Topics
     pointCloudTopic: "/ouster/points"            # Point cloud data
-    imuTopic: "/xsens/imu"                        # IMU data
+    imuTopic: "/imu/data"                        # IMU data
     odomTopic: "/odometry/imu"                    # IMU pre-preintegration odometry, same frequency as IMU
     gpsTopic: "/odometry/gps"                     # GPS odometry topic from navsat, see module_navsat.launch file
 
