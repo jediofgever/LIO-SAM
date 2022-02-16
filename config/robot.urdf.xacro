@@ -20,7 +20,7 @@
     <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
   </joint>
 
-  <joint name="xsens_imu_sensor_joint" type="fixed">
+  <joint name="imu_sensor_joint" type="fixed">
     <parent link="base_sensor_link" />
     <child link="imu_link" />
     <origin xyz="-0.0 -0.0 0.0" rpy="0 0 0" />
