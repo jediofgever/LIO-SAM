@@ -5,7 +5,7 @@
     pointCloudTopic: "/ouster/points"            # Point cloud data
     imuTopic: "/xsens/imu"                        # IMU data
     odomTopic: "/odometry/imu"                    # IMU pre-preintegration odometry, same frequency as IMU
-    gpsTopic: "/odometry/gps"                     # GPS odometry topic from navsat, see module_navsat.launch file
+    gpsTopic: "/odometry/gps555"                     # GPS odometry topic from navsat, see module_navsat.launch file
 
     # Frames
     lidarFrame: "lidar_sensor_link"
@@ -27,10 +27,10 @@
     sensor: ouster                               # lidar sensor type, either 'velodyne' or 'ouster'
     N_SCAN: 64                                   # number of lidar channel (i.e., 16, 32, 64, 128)
     Horizon_SCAN: 512                            # lidar horizontal resolution (Velodyne:1800, Ouster:512,1024,2048)
-    downsampleRate: 1                            # default: 1. Downsample your data if too many
+    downsampleRate: 3                            # default: 1. Downsample your data if too many
     # points. i.e., 16 = 64 / 4, 16 = 16 / 1
     lidarMinRange: 1.0                           # default: 1.0, minimum lidar range to be used
-    lidarMaxRange: 1000.0                        # default: 1000.0, maximum lidar range to be used
+    lidarMaxRange: 50.0                        # default: 1000.0, maximum lidar range to be used
 
     # IMU Settings
     imuAccNoise: 3.9939570888238808e-03
@@ -56,16 +56,16 @@
     surfFeatureMinValidNum: 100
 
     # voxel filter paprams
-    odometrySurfLeafSize: 0.2                     # default: 0.4 - outdoor, 0.2 - indoor
-    mappingCornerLeafSize: 0.1                    # default: 0.2 - outdoor, 0.1 - indoor
-    mappingSurfLeafSize: 0.2                      # default: 0.4 - outdoor, 0.2 - indoor
+    odometrySurfLeafSize: 0.4                     # default: 0.4 - outdoor, 0.2 - indoor
+    mappingCornerLeafSize: 0.2                    # default: 0.2 - outdoor, 0.1 - indoor
+    mappingSurfLeafSize: 0.4                      # default: 0.4 - outdoor, 0.2 - indoor
 
     # robot motion constraint (in case you are using a 2D robot)
     z_tollerance: 1000.0                          # meters
     rotation_tollerance: 1000.0                   # radians
 
     # CPU Params
-    numberOfCores: 4                              # number of cores for mapping optimization
+    numberOfCores: 8                              # number of cores for mapping optimization
     mappingProcessInterval: 0.15                  # seconds, regulate mapping frequency
 
     # Surrounding map
