@@ -156,7 +156,7 @@ public:
   {
     declare_parameter("pointCloudTopic", "points");
     get_parameter("pointCloudTopic", pointCloudTopic);
-    declare_parameter("imuTopic", "imu/data");
+    declare_parameter("imuTopic", "imu/absolute");
     get_parameter("imuTopic", imuTopic);
     declare_parameter("odomTopic", "lio_sam/odometry/imu");
     get_parameter("odomTopic", odomTopic);

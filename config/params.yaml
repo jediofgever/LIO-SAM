@@ -2,13 +2,13 @@
   ros__parameters:
     use_sim_time: false
     # Topics
-    pointCloudTopic: "/ouster/points"            # Point cloud data
-    imuTopic: "/imu/absolute"                    # IMU data
+    pointCloudTopic: "/ouster/points/base_link"            # Point cloud data
+    imuTopic: "/imu/data"                    # IMU data
     odomTopic: "/odometry/imu"                   # IMU pre-preintegration odometry, same frequency as IMU
     gpsTopic: "/odometry/gps"                    # GPS odometry topic from navsat, see module_navsat.launch file
 
     # Frames
-    lidarFrame: "velodyne_link"
+    lidarFrame: "lidar_sensor_link"
     baselinkFrame: "base_link"
     odometryFrame: "odom"
     mapFrame: "map"
